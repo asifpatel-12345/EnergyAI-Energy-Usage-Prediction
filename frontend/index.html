@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnergyAI - Energy Usage Prediction & Optimization</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>⚡ EnergyAI</h1>
+    <p>AI-powered energy usage prediction &amp; saving recommendations</p>
+  </header>
+
+  <main>
+    <section class="card form-card">
+      <h2>Enter your details</h2>
+
+      <label>Temperature: <b id="tempVal">30</b> °C</label>
+      <input type="range" id="temperature" min="0" max="50" value="30" />
+
+      <label>Number of people: <b id="occVal">3</b></label>
+      <input type="range" id="occupants" min="1" max="10" value="3" />
+
+      <label>Heavy appliances in use (AC, geyser, washing machine...): <b id="appVal">4</b></label>
+      <input type="range" id="appliances" min="0" max="10" value="4" />
+
+      <label>Day type</label>
+      <select id="is_weekend">
+        <option value="0">Weekday</option>
+        <option value="1">Weekend</option>
+      </select>
+
+      <button id="predictBtn">Predict &amp; Optimize</button>
+      <p id="error" class="error"></p>
+    </section>
+
+    <section id="results" class="hidden">
+      <div class="stats">
+        <div class="stat"><span>Daily usage</span><b id="total">-</b><small>kWh</small></div>
+        <div class="stat"><span>Daily cost</span><b id="cost">-</b><small>₹</small></div>
+        <div class="stat green"><span>You can save</span><b id="saved">-</b><small id="savedPct"></small></div>
+        <div class="stat green"><span>Monthly saving</span><b id="monthly">-</b><small>₹</small></div>
+        <div class="stat green"><span>CO₂ saved / day</span><b id="co2">-</b><small>kg</small></div>
+      </div>
+
+      <section class="card">
+        <h2>24-hour forecast</h2>
+        <canvas id="chart" width="900" height="380"></canvas>
+        <div class="legend">
+          <span><i style="background:#ef4444"></i>Predicted usage</span>
+          <span><i style="background:#22c55e"></i>Optimized usage</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Smart recommendations</h2>
+        <ul id="tips"></ul>
+        <p class="model" id="modelInfo"></p>
+      </section>
+    </section>
+  </main>
+
+  <footer>Hackathon Project • Python + Flask + scikit-learn • HTML/CSS/JS</footer>
+  <script src="script.js"></script>
+</body>
+</html>
